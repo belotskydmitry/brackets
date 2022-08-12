@@ -1,5 +1,5 @@
 module.exports = function check(str, bracketsConfig) {
-  let st = [];
+  /*let st = [];
   let br = bracketsConfig.join('').replace(/,/g, '');
 
   for (let bracket of str) {
@@ -16,5 +16,15 @@ module.exports = function check(str, bracketsConfig) {
         return false;
       }
     }
-  } return st.length === 0;
+  } return st.length === 0;*/
+  
+  let chars = 0;
+
+  bracketsConfig.forEach((item, numb) => bracketsConfig[numb] = String(item[0] + item[1]));
+  while (true) {
+    bracketsConfig.forEach((item) => str = str.replace(item, ''));
+    if (str === '') return true;
+    if (chars === str.length) return false;
+    chars = str.length;
+  }
 }
